@@ -13,7 +13,7 @@ namespace Spotify2.Models
 
         public string SongArtUrl { get; set; }
 
-        public int length { get; set; }
+        public int Length { get; set; }
 
         public int AlbumId { get; set; }
 
