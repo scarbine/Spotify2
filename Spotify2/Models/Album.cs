@@ -21,7 +21,7 @@ namespace Spotify2.Models
 
         public Genre Genre { get; set;  }
 
-        public DateTime releaseDate { get; set; }
+        public DateTime ReleaseDate { get; set; }
 
         public List<Song> Songs { get; set; }
     }
