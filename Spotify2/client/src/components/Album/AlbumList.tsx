@@ -19,7 +19,7 @@ export const AlbumList: React.FC<AlbumListProps> = ({}) => {
 
         return (
             <>
-                {albums.map(album => {
+                {albums?.map(album => {
                     return <AlbumCard key={album.id} album={album} />
                 })}
             </>

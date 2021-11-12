@@ -16,7 +16,7 @@ export const SongList: React.FC = () => {
     return(
         <>
             <h1>Song List</h1>
-            {songs.map((song: Song)  => {
+            {songs?.map((song: Song)  => {
                 return <SongCard key={song.id} song={song} />
             })}
         </>

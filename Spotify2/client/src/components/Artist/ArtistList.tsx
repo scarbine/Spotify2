@@ -14,7 +14,7 @@ export const ArtistList: React.FC<ArtistListProps> = () => {
 
   return (
     <>
-      {artist.map((art) => {
+      {artist?.map((art) => {
         return <ArtistCard key={art.id} artist={art} />;
       })}
     </>
