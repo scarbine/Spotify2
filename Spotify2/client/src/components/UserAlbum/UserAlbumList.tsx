@@ -19,7 +19,7 @@ export const UserAlbumList: React.FC<UserAlbumListProps> = ({}) => {
 
         return (
             <>
-            {userAlbums.map(userAlbum => {
+            {userAlbums?.map(userAlbum => {
                 return <UserAlbumCard key={userAlbum.id} userAlbum={userAlbum} />
             })}
             </>
