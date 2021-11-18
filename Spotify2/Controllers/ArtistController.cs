@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -10,35 +9,35 @@ using Spotify2.Models;
 
 namespace Spotify2.Controllers
 {
-    //[Authorize]
     [Route("api/[controller]")]
     [ApiController]
-    public class SongController : ControllerBase
+    public class ArtistController : ControllerBase
     {
-        private readonly ISongRepository _songRepository;
 
-        public SongController(ISongRepository songRepository)
+        private readonly IArtistRepository _artistRepository;
+
+        public ArtistController(IArtistRepository artistRepository)
         {
-            _songRepository = songRepository;
+            _artistRepository = artistRepository;
         }
 
         [HttpGet]
         public IActionResult Get()
         {
-            return Ok(_songRepository.GetAll());
+            return Ok(_artistRepository.GetAll());
         }
 
         [HttpPost]
-        public IActionResult Post(Song song)
+        public IActionResult Post(Artist artist)
         {
-            _songRepository.Add(song);
-            return CreatedAtAction(nameof(Get), new { id = song.Id }, song);
+            _artistRepository.Add(artist);
+            return CreatedAtAction(nameof(Get), new { id = artist.Id }, artist);
         }
 
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            var album = _songRepository.GetById(id);
+            var album = _artistRepository.GetById(id);
             if (album != null)
             {
                 NotFound();
@@ -49,10 +48,8 @@ namespace Spotify2.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            _songRepository.Delete(id);
+            _artistRepository.Delete(id);
             return NoContent();
         }
     }
-
 }
-

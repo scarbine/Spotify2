@@ -9,7 +9,7 @@ using Spotify2.Models;
 
 namespace Spotify2.Repositories
 {
-    public class ArtistRepository : BaseRepository
+    public class ArtistRepository : BaseRepository, IArtistRepository
     {
         public ArtistRepository(IConfiguration configuration) : base(configuration) { }
 
@@ -121,7 +121,7 @@ namespace Spotify2.Repositories
             {
                 return @"SELECT a.Id, a.Name
                         FROM Artist a";
-                       
+
             }
         }
 
