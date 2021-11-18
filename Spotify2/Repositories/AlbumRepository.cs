@@ -9,7 +9,7 @@ using System.Data.SqlClient;
 
 namespace Spotify2.Repositories
 {
-    public class AlbumRepository: BaseRepository
+    public class AlbumRepository : BaseRepository, IAlbumRepository
     {
 
         public AlbumRepository(IConfiguration configuration) : base(configuration) { }
@@ -154,11 +154,11 @@ namespace Spotify2.Repositories
                 {
                     Id = DbUtils.GetInt(reader, "Artistid"),
                     Name = DbUtils.GetString(reader, "ArtistName")
-                   
-                    
+
+
                 }
-                
-                
+
+
             }
         }
     }
