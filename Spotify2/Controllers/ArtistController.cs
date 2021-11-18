@@ -6,9 +6,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using Spotify2.Repositories;
 using Spotify2.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Spotify2.Controllers
 {
+    //[Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class ArtistController : ControllerBase
