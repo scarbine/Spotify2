@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -7,39 +6,40 @@ using System.Linq;
 using System.Threading.Tasks;
 using Spotify2.Repositories;
 using Spotify2.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Spotify2.Controllers
 {
     //[Authorize]
     [Route("api/[controller]")]
     [ApiController]
-    public class SongController : ControllerBase
+    public class AlbumController : ControllerBase
     {
-        private readonly ISongRepository _songRepository;
+        private readonly IAlbumRepository _albumRepository;
 
-        public SongController(ISongRepository songRepository)
+        public AlbumController(IAlbumRepository albumRepository)
         {
-            _songRepository = songRepository;
+            _albumRepository = albumRepository;
         }
 
         [HttpGet]
         public IActionResult Get()
         {
-            return Ok(_songRepository.GetAll());
+            return Ok(_albumRepository.GetAll());
         }
 
         [HttpPost]
-        public IActionResult Post(Song song)
+        public IActionResult Post(Album album)
         {
-            _songRepository.Add(song);
-            return CreatedAtAction(nameof(Get), new { id = song.Id }, song);
+            _albumRepository.Add(album);
+            return CreatedAtAction(nameof(Get), new { id = album.Id }, album);
         }
 
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            var album = _songRepository.GetById(id);
-            if (album != null)
+            var album = _albumRepository.GetById(id);
+            if(album != null)
             {
                 NotFound();
             }
@@ -49,10 +49,10 @@ namespace Spotify2.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            _songRepository.Delete(id);
+            _albumRepository.Delete(id);
             return NoContent();
         }
+
+
     }
-
 }
-

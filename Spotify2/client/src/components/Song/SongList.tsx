@@ -4,9 +4,10 @@ import { Song } from "../../Interface/Interface";
 import { SongCard } from "./SongCard";
 
 
-export const SongList: React.FC = () => {
+export const SongList: React.FC = ({}) => {
 
     const [songs , setSongs] = useState<Song[] | []>([])
+
 
 
     useEffect(()=>{
